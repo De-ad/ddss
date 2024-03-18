@@ -1,7 +1,6 @@
-
-CREATE PROCEDURE get_data() LANGUAGE plpgsql AS $$
+CREATE PROCEDURE get_data(table_name text) LANGUAGE plpgsql AS $$
 DECLARE
-    t_name TEXT := 'characters';
+    t_name TEXT := table_name;
     s_name TEXT := 's334512';
     no_header TEXT := 'No.';
     no_delimeter TEXT := '---';
@@ -37,7 +36,6 @@ BEGIN
         t_name := LOWER(t_name);
     END IF;
 
-    RAISE NOTICE '';
     RAISE NOTICE 'Схема: %', s_name;
     RAISE NOTICE 'Таблица: %', t_name;
     RAISE NOTICE '';
@@ -65,5 +63,3 @@ BEGIN
 
 END;
 $$;
-
-CALL get_data();

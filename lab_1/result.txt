@@ -16,25 +16,22 @@ studs=> \d characters
     TABLE "lobby_requests" CONSTRAINT "lobby_requests_character_id_fkey" FOREIGN KEY (character_id) REFERENCES characters(id) ON UPDATE CASCADE ON DELETE CASCADE
 
 
-studs=> \i script.sql
-psql:script.sql:67: ERROR:  function "get_data" already exists with same argument types
-psql:script.sql:69: NOTICE:  
-psql:script.sql:69: NOTICE:  Схема: s334512
-psql:script.sql:69: NOTICE:  Таблица: characters
-psql:script.sql:69: NOTICE:  
-psql:script.sql:69: NOTICE:  No.  Имя столбца  Атрибуты
-psql:script.sql:69: NOTICE:  ---  -----------  ------------------------------------------------------
-psql:script.sql:69: NOTICE:  1    id           Type: int4
-psql:script.sql:69: NOTICE:  ---  -----------  ------------------------------------------------------
-psql:script.sql:69: NOTICE:  2    game_system  Type: int4
-psql:script.sql:69: NOTICE:                     Constr: "game_system_id" References game_systems(id)
-psql:script.sql:69: NOTICE:  ---  -----------  ------------------------------------------------------
-psql:script.sql:69: NOTICE:  3    user_id      Type: int4
-psql:script.sql:69: NOTICE:                     Constr: "user_id" References users(id)
-psql:script.sql:69: NOTICE:  ---  -----------  ------------------------------------------------------
-psql:script.sql:69: NOTICE:  4    current_sta  Type: character_status
-psql:script.sql:69: NOTICE:  ---  -----------  ------------------------------------------------------
-psql:script.sql:69: NOTICE:  5    stats        Type: bytea
-psql:script.sql:69: NOTICE:  
+studs=> call get_data('characters');
+NOTICE:  Схема: s334512
+NOTICE:  Таблица: characters
+NOTICE:  
+NOTICE:  No.  Имя столбца  Атрибуты
+NOTICE:  ---  -----------  ------------------------------------------------------
+NOTICE:  1    id           Type: int4
+NOTICE:  ---  -----------  ------------------------------------------------------
+NOTICE:  2    game_system  Type: int4
+NOTICE:                     Constr: "game_system_id" References game_systems(id)
+NOTICE:  ---  -----------  ------------------------------------------------------
+NOTICE:  3    user_id      Type: int4
+NOTICE:                     Constr: "user_id" References users(id)
+NOTICE:  ---  -----------  ------------------------------------------------------
+NOTICE:  4    current_sta  Type: character_status
+NOTICE:  ---  -----------  ------------------------------------------------------
+NOTICE:  5    stats        Type: bytea
+NOTICE:  
 CALL
-
