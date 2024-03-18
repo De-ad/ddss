@@ -1,0 +1,40 @@
+studs=> \d characters
+                                            Таблица "s334512.characters"
+    Столбец     |       Тип        | Правило сортировки | Допустимость NULL |              По умолчанию              
+----------------+------------------+--------------------+-------------------+----------------------------------------
+ id             | integer          |                    | not null          | nextval('characters_id_seq'::regclass)
+ game_system_id | integer          |                    |                   | 
+ user_id        | integer          |                    |                   | 
+ current_status | character_status |                    | not null          | 
+ stats          | bytea            |                    | not null          | 
+Индексы:
+    "characters_pkey" PRIMARY KEY, btree (id)
+Ограничения внешнего ключа:
+    "characters_game_system_id_fkey" FOREIGN KEY (game_system_id) REFERENCES game_systems(id) ON UPDATE CASCADE ON DELETE RESTRICT
+    "characters_user_id_fkey" FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE RESTRICT
+Ссылки извне:
+    TABLE "lobby_requests" CONSTRAINT "lobby_requests_character_id_fkey" FOREIGN KEY (character_id) REFERENCES characters(id) ON UPDATE CASCADE ON DELETE CASCADE
+
+
+studs=> \i script.sql
+psql:script.sql:67: ERROR:  function "get_data" already exists with same argument types
+psql:script.sql:69: NOTICE:  
+psql:script.sql:69: NOTICE:  Схема: s334512
+psql:script.sql:69: NOTICE:  Таблица: characters
+psql:script.sql:69: NOTICE:  
+psql:script.sql:69: NOTICE:  No.  Имя столбца  Атрибуты
+psql:script.sql:69: NOTICE:  ---  -----------  ------------------------------------------------------
+psql:script.sql:69: NOTICE:  1    id           Type: int4
+psql:script.sql:69: NOTICE:  ---  -----------  ------------------------------------------------------
+psql:script.sql:69: NOTICE:  2    game_system  Type: int4
+psql:script.sql:69: NOTICE:                     Constr: "game_system_id" References game_systems(id)
+psql:script.sql:69: NOTICE:  ---  -----------  ------------------------------------------------------
+psql:script.sql:69: NOTICE:  3    user_id      Type: int4
+psql:script.sql:69: NOTICE:                     Constr: "user_id" References users(id)
+psql:script.sql:69: NOTICE:  ---  -----------  ------------------------------------------------------
+psql:script.sql:69: NOTICE:  4    current_sta  Type: character_status
+psql:script.sql:69: NOTICE:  ---  -----------  ------------------------------------------------------
+psql:script.sql:69: NOTICE:  5    stats        Type: bytea
+psql:script.sql:69: NOTICE:  
+CALL
+
