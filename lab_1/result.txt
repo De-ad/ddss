@@ -23,15 +23,15 @@ NOTICE:
 NOTICE:  No.  Имя столбца  Атрибуты
 NOTICE:  ---  -----------  ------------------------------------------------------
 NOTICE:  1    id           Type: int4
-NOTICE:  ---  -----------  ------------------------------------------------------
+NOTICE:   
 NOTICE:  2    game_system  Type: int4
 NOTICE:                     Constr: "game_system_id" References game_systems(id)
-NOTICE:  ---  -----------  ------------------------------------------------------
+NOTICE:   
 NOTICE:  3    user_id      Type: int4
 NOTICE:                     Constr: "user_id" References users(id)
-NOTICE:  ---  -----------  ------------------------------------------------------
+NOTICE:   
 NOTICE:  4    current_sta  Type: character_status
-NOTICE:  ---  -----------  ------------------------------------------------------
+NOTICE:   
 NOTICE:  5    stats        Type: bytea
 NOTICE:  
 CALL
