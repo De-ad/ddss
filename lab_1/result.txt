@@ -16,7 +16,7 @@ studs=> \d characters
     TABLE "lobby_requests" CONSTRAINT "lobby_requests_character_id_fkey" FOREIGN KEY (character_id) REFERENCES characters(id) ON UPDATE CASCADE ON DELETE CASCADE
 
 
-studs=> call get_data('characters');
+studs=> call get_data('s334512','characters');
 NOTICE:  Схема: s334512
 NOTICE:  Таблица: characters
 NOTICE:  

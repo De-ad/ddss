@@ -1,7 +1,7 @@
-CREATE PROCEDURE get_data(table_name TEXT) LANGUAGE plpgsql AS $$
+CREATE PROCEDURE get_data(schema_name TEXT, table_name TEXT) LANGUAGE plpgsql AS $$
 DECLARE
     t_name TEXT := table_name;
-    s_name TEXT := 's334512';
+    s_name TEXT := schema_name;
     no_header TEXT := 'No.';
     no_delimeter TEXT := '---';
     name_header TEXT := 'Имя столбца';
