@@ -1,4 +1,4 @@
-CREATE PROCEDURE get_data(table_name text) LANGUAGE plpgsql AS $$
+CREATE PROCEDURE get_data(table_name TEXT) LANGUAGE plpgsql AS $$
 DECLARE
     t_name TEXT := table_name;
     s_name TEXT := 's334512';
@@ -29,13 +29,6 @@ DECLARE
     );
 
 BEGIN
-
-    IF LEFT(t_name, 1) = '"' and RIGHT(t_name, 1) = '"' THEN
-        t_name := BTRIM(t_name, '"');
-    ELSE
-        t_name := LOWER(t_name);
-    END IF;
-
     RAISE NOTICE 'Схема: %', s_name;
     RAISE NOTICE 'Таблица: %', t_name;
     RAISE NOTICE '';
