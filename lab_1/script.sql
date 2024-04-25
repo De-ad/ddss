@@ -14,6 +14,8 @@ DECLARE
             patt.attnum num,
             patt.attname master_att, 
             pt.typname, 
+            patt.atttypmod,
+            patt.atttypid,
             pcstr.contype, 
             pcstr.confrelid, 
             patt2.attname slave_att, 
@@ -41,7 +43,13 @@ BEGIN
             IF prev_attr <> '' THEN
                 RAISE NOTICE ' ';
             END IF;
-            RAISE NOTICE '%  %  Type: %', RPAD(c.num::TEXT, 3, ' '), RPAD(c.master_att, 11, ' '), c.typname;
+            IF c.typname = 'numeric' THEN 
+                RAISE NOTICE '%  %  Type: % (%,%)', RPAD(c.num::TEXT, 3, ' '), RPAD(c.master_att, 11, ' '), c.typname, ((c.atttypmod - 4) >> 16), (c.atttypmod - 4) & 65535;
+            ELSIF c.typname = 'varchar' OR c.typname = 'char' THEN 
+                RAISE NOTICE '%  %  Type: % (%)', RPAD(c.num::TEXT, 3, ' '), RPAD(c.master_att, 11, ' '), c.typname, (c.atttypmod - 4);
+            ELSE 
+                RAISE NOTICE '%  %  Type: %', RPAD(c.num::TEXT, 3, ' '), RPAD(c.master_att, 11, ' '), c.typname;
+            END IF;
             IF c.contype = 'f' THEN
                 RAISE NOTICE '% % Constr: "%" References %(%)', RPAD('', 4, ' '),  RPAD('', 13, ' '), c.master_att, c.relname, c.slave_att;
             END IF;
