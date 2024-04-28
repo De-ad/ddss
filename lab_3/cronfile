@@ -1,0 +1,2 @@
+# every day two times at 5 and 17 o'clock
+0 5,17 * * * /var/db/backup_script.sh
